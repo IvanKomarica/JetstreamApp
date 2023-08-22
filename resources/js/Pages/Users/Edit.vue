@@ -12,14 +12,14 @@
             <form @submit.prevent="update" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-8">
                 <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     <div class="sm:col-span-2">
-                        <label for="name" class="block text-sm font-semibold leading-6 text-gray-900">Имя</label>
+                        <label for="name" class="block text-sm font-semi-bold leading-6 text-gray-900">Имя</label>
                         <div class="mt-2.5">
                             <input :class="{'border-red-500' : form.errors.name}" v-model="form.name" type="text" name="name" id="name" autocomplete="Name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <div class="text-red-500 mt-2" v-if="form.errors.name">{{ form.errors.name }}</div>
                         </div>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
+                        <label for="email" class="block text-sm font-semi-bold leading-6 text-gray-900">Email</label>
                         <div class="mt-2.5">
                             <input :class="{'border-red-500' : form.errors.email}" v-model="form.email" type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <div class="text-red-500 mt-2" v-if="form.errors.email">{{ form.errors.email }}</div>
@@ -27,7 +27,10 @@
                     </div>
                 </div>
                 <div class="mt-10">
-                    <button type="submit" class="block w-full rounded-md bg-green-900 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Обновить</button>
+                    <button :disabled="form.processing" type="submit" class="block w-full rounded-md bg-green-900 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Обновить</button>
+                </div>
+                <div v-if="form.isDirty">
+                    Что-то изменилось не забудьте сохранить форму
                 </div>
             </form>
         </div>

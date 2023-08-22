@@ -75,6 +75,7 @@ class UserController extends Controller
                 'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             ])
         );
+        session()->flash('message', 'Запись успешно обновлена');
         return redirect()->route('users.index');
     }
 
